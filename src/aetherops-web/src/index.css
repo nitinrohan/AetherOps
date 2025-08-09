@@ -1,0 +1,79 @@
+/* Line 1: Make sizing predictable everywhere */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Line 6: Respect system theme & set base colors */
+:root {
+  color-scheme: light dark;
+  --bg: #111; /* dark background for dev */
+  --fg: #eaeaea; /* foreground text color */
+  --muted: #b3b3b3; /* secondary text */
+}
+
+/* Line 14: Full‑height page with centered grid */
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial, "Apple Color Emoji",
+    "Segoe UI Emoji";
+}
+
+/* Line 23: A full-viewport grid that centers content */
+.center-wrap {
+  min-height: 100svh; /* safe viewport for mobile address bars */
+  display: grid;
+  place-items: center; /* centers both vertically & horizontally */
+  padding: 2rem; /* keeps content off edges on small screens */
+}
+
+/* Line 31: A content column with max width so it doesn’t stretch too wide */
+.center-col {
+  width: 100%;
+  max-width: 760px; /* comfortable reading width on desktop */
+  text-align: center;
+}
+
+/* Line 38: Responsive type: scales between small and large screens */
+h1 {
+  margin: 0 0 0.5rem 0;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+}
+p.lead {
+  margin: 0 0 1rem 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 2.3vw, 1.125rem);
+}
+
+/* Line 50: Accessible button with subtle rounding */
+button {
+  padding: 0.6rem 1rem;
+  border-radius: 0.6rem;
+  border: 0;
+  font-weight: 600;
+  cursor: pointer;
+  background: #222;
+  color: #fff;
+}
+button:hover {
+  filter: brightness(1.1);
+}
+
+/* Line 62: Small code text below title */
+.small {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  word-break: break-word; /* prevents overflow on tiny screens */
+}
