@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: aetherops-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=password # dev only
+      - MYSQL_DATABASE=aetherops
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-ppassword"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  db_data:

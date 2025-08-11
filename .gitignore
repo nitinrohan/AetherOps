@@ -7,7 +7,7 @@ build/
 .venv/
 __pycache__/
 *.pyc
-
+.env
 # OS / tooling
 .DS_Store
 
